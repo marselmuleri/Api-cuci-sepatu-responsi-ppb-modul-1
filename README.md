@@ -23,48 +23,29 @@ REST API sederhana untuk layanan daftar barang cuci sepatu. API ini memungkinkan
 | notes | text | catatan tambahan |
 | created_at | timestamp | waktu dibuat |
 
-## Endpoints
-Base URL: `https://responsimodulprakppb1.vercel.app/`
+## Endpoints  
+**Base URL:** `https://responsimodulprakppb1.vercel.app/`
 
-1. GET /api/items
-Mengambil semua item (atau filter dengan ?status=Selesai).
+---
 
-Response Body (200 OK):
+### 1️⃣ GET `/api/items`  
+Mengambil semua item (atau filter dengan `?status=Selesai`).
 
-``` JSON
-
+**Response (200 OK):**  
+```json
 [
-    {
-        "id": "5fdc577a-709e-4159-a85d-a6fb0b08969d",
-        "name": "Converse Hitam",
-        "owner_name": "Dimas",
-        "phone": "081298765432",
-        "pickup_date": "2025-10-26",
-        "status": "Menunggu",
-        "price": 60000,
-        "notes": "Tambahkan parfum sepatu",
-        "created_at": "2025-10-23T08:11:22.230935+00:00"
-    },
-    {
-        "id": "c78d934d-2a40-461c-884d-f4deb1e3c057",
-        "name": "Sepatu Olahraga",
-        "owner_name": "Citra",
-        "phone": "083456789012",
-        "pickup_date": null,
-        "status": "Selesai",
-        "price": 40000,
-        "notes": "Dicuci kering",
-        "created_at": "2025-10-23T06:21:32.204421+00:00"
-    }
-]
-2. GET /api/items/:id
-Mengambil satu item berdasarkan ID.
-
-Response Body (200 OK):
-
-JSON
-
-{
+  {
+    "id": "5fdc577a-709e-4159-a85d-a6fb0b08969d",
+    "name": "Converse Hitam",
+    "owner_name": "Dimas",
+    "phone": "081298765432",
+    "pickup_date": "2025-10-26",
+    "status": "Menunggu",
+    "price": 60000,
+    "notes": "Tambahkan parfum sepatu",
+    "created_at": "2025-10-23T08:11:22.230935+00:00"
+  },
+  {
     "id": "c78d934d-2a40-461c-884d-f4deb1e3c057",
     "name": "Sepatu Olahraga",
     "owner_name": "Citra",
@@ -74,74 +55,104 @@ JSON
     "price": 40000,
     "notes": "Dicuci kering",
     "created_at": "2025-10-23T06:21:32.204421+00:00"
+  }
+]
+```
+
+---
+
+### 2️⃣ GET `/api/items/:id`  
+Mengambil satu item berdasarkan ID.
+
+**Response (200 OK):**  
+```json
+{
+  "id": "c78d934d-2a40-461c-884d-f4deb1e3c057",
+  "name": "Sepatu Olahraga",
+  "owner_name": "Citra",
+  "phone": "083456789012",
+  "pickup_date": null,
+  "status": "Selesai",
+  "price": 40000,
+  "notes": "Dicuci kering",
+  "created_at": "2025-10-23T06:21:32.204421+00:00"
 }
-3. POST /api/items
+```
+
+---
+
+### 3️⃣ POST `/api/items`  
 Membuat item baru.
 
-Request Body:
-
-JSON
-
+**Request Body:**  
+```json
 {
-    "name": "Converse Hitam",
-    "owner_name": "Dimas",
-    "phone": "081298765432",
-    "pickup_date": "2025-10-26",
-    "status": "Menunggu",
-    "price": 60000,
-    "notes": "Tambahkan parfum sepatu"
+  "name": "Converse Hitam",
+  "owner_name": "Dimas",
+  "phone": "081298765432",
+  "pickup_date": "2025-10-26",
+  "status": "Menunggu",
+  "price": 60000,
+  "notes": "Tambahkan parfum sepatu"
 }
-Response Body (201 Created):
+```
 
-```JSON
-
+**Response (201 Created):**  
+```json
 {
-    "id": "6118c058-9e56-4efb-aa81-9e77acf41aae",
-    "name": "Converse Hitam",
-    "owner_name": "Dimas",
-    "phone": "081298765432",
-    "pickup_date": "2025-10-26",
-    "status": "Menunggu",
-    "price": 60000,
-    "notes": "Tambahkan parfum sepatu",
-    "created_at": "2025-10-23T08:14:48.784822+00:00"
+  "id": "6118c058-9e56-4efb-aa81-9e77acf41aae",
+  "name": "Converse Hitam",
+  "owner_name": "Dimas",
+  "phone": "081298765432",
+  "pickup_date": "2025-10-26",
+  "status": "Menunggu",
+  "price": 60000,
+  "notes": "Tambahkan parfum sepatu",
+  "created_at": "2025-10-23T08:14:48.784822+00:00"
 }
-4. PUT /api/items/:id
-Update data item (misal mengubah status).
+```
 
-Request Body:
+---
 
-JSON
+### 4️⃣ PUT `/api/items/:id`  
+Mengubah data item (misalnya mengupdate status).
 
+**Request Body:**  
+```json
 {
-    "status": "Selesai",
-    "notes": "Sudah lunas. Siap diambil."
+  "status": "Selesai",
+  "notes": "Sudah lunas. Siap diambil."
 }
-Response Body (200 OK):
+```
 
-JSON
-
+**Response (200 OK):**  
+```json
 {
-    "id": "6118c058-9e56-4efb-aa81-9e77acf41aae",
-    "name": "Converse Hitam",
-    "owner_name": "Dimas",
-    "phone": "081298765432",
-    "pickup_date": "2025-10-26",
-    "status": "Selesai",
-    "price": 60000,
-    "notes": "Sudah lunas. Siap diambil.",
-    "created_at": "2025-10-23T08:14:48.784822+00:00"
+  "id": "6118c058-9e56-4efb-aa81-9e77acf41aae",
+  "name": "Converse Hitam",
+  "owner_name": "Dimas",
+  "phone": "081298765432",
+  "pickup_date": "2025-10-26",
+  "status": "Selesai",
+  "price": 60000,
+  "notes": "Sudah lunas. Siap diambil.",
+  "created_at": "2025-10-23T08:14:48.784822+00:00"
 }
-5. DELETE /api/items/:id
-Hapus item.
+```
 
-Response Body (200 OK):
+---
 
-JSON
+### 5️⃣ DELETE `/api/items/:id`  
+Menghapus item.
 
+**Response (200 OK):**  
+```json
 {
-    "message": "Deleted successfully"
+  "message": "Deleted successfully"
 }
+```
+
+---
 
 ## Lisensi
 Dibuat untuk keperluan Responsi Modul 1 Praktikum PPB.
