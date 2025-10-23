@@ -26,8 +26,12 @@ REST API sederhana untuk layanan daftar barang cuci sepatu. API ini memungkinkan
 ## Endpoints
 Base URL: `https://responsimodulprakppb1.vercel.app/`
 
-### GET /api/items
-Ambil semua item (opsional: ?status=Selesai untuk filter).
+1. GET /api/items
+Mengambil semua item (atau filter dengan ?status=Selesai).
+
+Response Body (200 OK):
+
+JSON
 
 [
     {
@@ -42,28 +46,6 @@ Ambil semua item (opsional: ?status=Selesai untuk filter).
         "created_at": "2025-10-23T08:11:22.230935+00:00"
     },
     {
-        "id": "39cc3933-0a8c-4a07-bc1c-6f39e4faabb4",
-        "name": "Sneakers Putih",
-        "owner_name": "Andi",
-        "phone": "081234567890",
-        "pickup_date": "2025-10-25",
-        "status": "Menunggu",
-        "price": 50000,
-        "notes": "Cuci dan pewarnaan",
-        "created_at": "2025-10-23T06:21:32.204421+00:00"
-    },
-    {
-        "id": "9a839ee3-f267-4e74-abb3-86c4e2845abf",
-        "name": "Boot Kulit",
-        "owner_name": "Budi",
-        "phone": "082345678901",
-        "pickup_date": "2025-10-24",
-        "status": "Proses",
-        "price": 75000,
-        "notes": "Poles saja",
-        "created_at": "2025-10-23T06:21:32.204421+00:00"
-    },
-    {
         "id": "c78d934d-2a40-461c-884d-f4deb1e3c057",
         "name": "Sepatu Olahraga",
         "owner_name": "Citra",
@@ -75,37 +57,43 @@ Ambil semua item (opsional: ?status=Selesai untuk filter).
         "created_at": "2025-10-23T06:21:32.204421+00:00"
     }
 ]
+2. GET /api/items/:id
+Mengambil satu item berdasarkan ID.
 
-### GET /api/items/:id
-Ambil satu item berdasarkan ID.
+Response Body (200 OK):
 
-[
-    {
-        "id": "0cbf0b64-121a-4c08-b04e-6ddb41ff0b12",
-        "name": "Converse Hitam",
-        "owner_name": "Dimas",
-        "phone": "081298765432",
-        "pickup_date": "2025-10-26",
-        "status": "Selesai",
-        "price": 60000,
-        "notes": "Tambahkan parfum sepatu",
-        "created_at": "2025-10-23T08:14:27.438129+00:00"
-    },
-    {
-        "id": "c78d934d-2a40-461c-884d-f4deb1e3c057",
-        "name": "Sepatu Olahraga",
-        "owner_name": "Citra",
-        "phone": "083456789012",
-        "pickup_date": null,
-        "status": "Selesai",
-        "price": 40000,
-        "notes": "Dicuci kering",
-        "created_at": "2025-10-23T06:21:32.204421+00:00"
-    }
-]
+JSON
 
-### POST /api/items
-Buat item baru.
+{
+    "id": "c78d934d-2a40-461c-884d-f4deb1e3c057",
+    "name": "Sepatu Olahraga",
+    "owner_name": "Citra",
+    "phone": "083456789012",
+    "pickup_date": null,
+    "status": "Selesai",
+    "price": 40000,
+    "notes": "Dicuci kering",
+    "created_at": "2025-10-23T06:21:32.204421+00:00"
+}
+3. POST /api/items
+Membuat item baru.
+
+Request Body:
+
+JSON
+
+{
+    "name": "Converse Hitam",
+    "owner_name": "Dimas",
+    "phone": "081298765432",
+    "pickup_date": "2025-10-26",
+    "status": "Menunggu",
+    "price": 60000,
+    "notes": "Tambahkan parfum sepatu"
+}
+Response Body (201 Created):
+
+JSON
 
 {
     "id": "6118c058-9e56-4efb-aa81-9e77acf41aae",
@@ -118,24 +106,38 @@ Buat item baru.
     "notes": "Tambahkan parfum sepatu",
     "created_at": "2025-10-23T08:14:48.784822+00:00"
 }
+4. PUT /api/items/:id
+Update data item (misal mengubah status).
 
-### PUT /api/items/:id
-Update data item.
+Request Body:
+
+JSON
 
 {
-    "id": "0cbf0b64-121a-4c08-b04e-6ddb41ff0b12",
+    "status": "Selesai",
+    "notes": "Sudah lunas. Siap diambil."
+}
+Response Body (200 OK):
+
+JSON
+
+{
+    "id": "6118c058-9e56-4efb-aa81-9e77acf41aae",
     "name": "Converse Hitam",
     "owner_name": "Dimas",
     "phone": "081298765432",
     "pickup_date": "2025-10-26",
     "status": "Selesai",
     "price": 60000,
-    "notes": "Tambahkan parfum sepatu",
-    "created_at": "2025-10-23T08:14:27.438129+00:00"
+    "notes": "Sudah lunas. Siap diambil.",
+    "created_at": "2025-10-23T08:14:48.784822+00:00"
 }
-
-### DELETE /api/items/:id
+5. DELETE /api/items/:id
 Hapus item.
+
+Response Body (200 OK):
+
+JSON
 
 {
     "message": "Deleted successfully"
