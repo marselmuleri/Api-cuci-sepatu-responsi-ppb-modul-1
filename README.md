@@ -155,4 +155,5 @@ Menghapus item.
 ---
 
 ## Lisensi
-Dibuat untuk keperluan Responsi Modul 1 Praktikum PPB.
+Dibuat untuk keperluan Responsi Modul 1 Praktikum PPB. oleh Marsel Muleri 21120123120009 
+
