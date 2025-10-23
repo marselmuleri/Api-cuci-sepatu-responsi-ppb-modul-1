@@ -31,7 +31,7 @@ Mengambil semua item (atau filter dengan ?status=Selesai).
 
 Response Body (200 OK):
 
-JSON
+``` JSON
 
 [
     {
@@ -56,13 +56,13 @@ JSON
         "notes": "Dicuci kering",
         "created_at": "2025-10-23T06:21:32.204421+00:00"
     }
-]
+] ```
 2. GET /api/items/:id
 Mengambil satu item berdasarkan ID.
 
 Response Body (200 OK):
 
-JSON
+```JSON
 
 {
     "id": "c78d934d-2a40-461c-884d-f4deb1e3c057",
@@ -74,13 +74,13 @@ JSON
     "price": 40000,
     "notes": "Dicuci kering",
     "created_at": "2025-10-23T06:21:32.204421+00:00"
-}
+}```
 3. POST /api/items
 Membuat item baru.
 
 Request Body:
 
-JSON
+```JSON
 
 {
     "name": "Converse Hitam",
@@ -93,7 +93,7 @@ JSON
 }
 Response Body (201 Created):
 
-JSON
+```JSON
 
 {
     "id": "6118c058-9e56-4efb-aa81-9e77acf41aae",
@@ -105,21 +105,21 @@ JSON
     "price": 60000,
     "notes": "Tambahkan parfum sepatu",
     "created_at": "2025-10-23T08:14:48.784822+00:00"
-}
+}```
 4. PUT /api/items/:id
 Update data item (misal mengubah status).
 
 Request Body:
 
-JSON
+```JSON
 
 {
     "status": "Selesai",
     "notes": "Sudah lunas. Siap diambil."
-}
+}```
 Response Body (200 OK):
 
-JSON
+```JSON
 
 {
     "id": "6118c058-9e56-4efb-aa81-9e77acf41aae",
@@ -131,17 +131,17 @@ JSON
     "price": 60000,
     "notes": "Sudah lunas. Siap diambil.",
     "created_at": "2025-10-23T08:14:48.784822+00:00"
-}
+}```
 5. DELETE /api/items/:id
 Hapus item.
 
 Response Body (200 OK):
 
-JSON
+```JSON
 
 {
     "message": "Deleted successfully"
-}
+}```
 
 ## Lisensi
 Dibuat untuk keperluan Responsi Modul 1 Praktikum PPB.
