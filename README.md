@@ -24,81 +24,122 @@ REST API sederhana untuk layanan daftar barang cuci sepatu. API ini memungkinkan
 | created_at | timestamp | waktu dibuat |
 
 ## Endpoints
-Base URL: `https://<nama-deploy>.vercel.app/api/items`
+Base URL: `https://responsimodulprakppb1.vercel.app/`
 
 ### GET /api/items
 Ambil semua item (opsional: ?status=Selesai untuk filter).
 
+[
+    {
+        "id": "5fdc577a-709e-4159-a85d-a6fb0b08969d",
+        "name": "Converse Hitam",
+        "owner_name": "Dimas",
+        "phone": "081298765432",
+        "pickup_date": "2025-10-26",
+        "status": "Menunggu",
+        "price": 60000,
+        "notes": "Tambahkan parfum sepatu",
+        "created_at": "2025-10-23T08:11:22.230935+00:00"
+    },
+    {
+        "id": "39cc3933-0a8c-4a07-bc1c-6f39e4faabb4",
+        "name": "Sneakers Putih",
+        "owner_name": "Andi",
+        "phone": "081234567890",
+        "pickup_date": "2025-10-25",
+        "status": "Menunggu",
+        "price": 50000,
+        "notes": "Cuci dan pewarnaan",
+        "created_at": "2025-10-23T06:21:32.204421+00:00"
+    },
+    {
+        "id": "9a839ee3-f267-4e74-abb3-86c4e2845abf",
+        "name": "Boot Kulit",
+        "owner_name": "Budi",
+        "phone": "082345678901",
+        "pickup_date": "2025-10-24",
+        "status": "Proses",
+        "price": 75000,
+        "notes": "Poles saja",
+        "created_at": "2025-10-23T06:21:32.204421+00:00"
+    },
+    {
+        "id": "c78d934d-2a40-461c-884d-f4deb1e3c057",
+        "name": "Sepatu Olahraga",
+        "owner_name": "Citra",
+        "phone": "083456789012",
+        "pickup_date": null,
+        "status": "Selesai",
+        "price": 40000,
+        "notes": "Dicuci kering",
+        "created_at": "2025-10-23T06:21:32.204421+00:00"
+    }
+]
+
 ### GET /api/items/:id
 Ambil satu item berdasarkan ID.
+
+[
+    {
+        "id": "0cbf0b64-121a-4c08-b04e-6ddb41ff0b12",
+        "name": "Converse Hitam",
+        "owner_name": "Dimas",
+        "phone": "081298765432",
+        "pickup_date": "2025-10-26",
+        "status": "Selesai",
+        "price": 60000,
+        "notes": "Tambahkan parfum sepatu",
+        "created_at": "2025-10-23T08:14:27.438129+00:00"
+    },
+    {
+        "id": "c78d934d-2a40-461c-884d-f4deb1e3c057",
+        "name": "Sepatu Olahraga",
+        "owner_name": "Citra",
+        "phone": "083456789012",
+        "pickup_date": null,
+        "status": "Selesai",
+        "price": 40000,
+        "notes": "Dicuci kering",
+        "created_at": "2025-10-23T06:21:32.204421+00:00"
+    }
+]
 
 ### POST /api/items
 Buat item baru.
 
+{
+    "id": "6118c058-9e56-4efb-aa81-9e77acf41aae",
+    "name": "Converse Hitam",
+    "owner_name": "Dimas",
+    "phone": "081298765432",
+    "pickup_date": "2025-10-26",
+    "status": "Menunggu",
+    "price": 60000,
+    "notes": "Tambahkan parfum sepatu",
+    "created_at": "2025-10-23T08:14:48.784822+00:00"
+}
+
 ### PUT /api/items/:id
 Update data item.
+
+{
+    "id": "0cbf0b64-121a-4c08-b04e-6ddb41ff0b12",
+    "name": "Converse Hitam",
+    "owner_name": "Dimas",
+    "phone": "081298765432",
+    "pickup_date": "2025-10-26",
+    "status": "Selesai",
+    "price": 60000,
+    "notes": "Tambahkan parfum sepatu",
+    "created_at": "2025-10-23T08:14:27.438129+00:00"
+}
 
 ### DELETE /api/items/:id
 Hapus item.
 
-## Contoh Request & Response
-
-### POST /api/items
-Request:
-```json
 {
-  "name": "Sneakers Putih",
-  "owner_name": "Andi",
-  "phone": "081234567890",
-  "pickup_date": "2025-10-25",
-  "status": "Menunggu",
-  "price": 50000,
-  "notes": "Permintaan khusus: gunakan sabun A"
+    "message": "Deleted successfully"
 }
-```
-Response (201):
-```json
-{
-  "id": "generated-uuid",
-  "name": "Sneakers Putih",
-  "owner_name": "Andi",
-  "phone": "081234567890",
-  "pickup_date": "2025-10-25",
-  "status": "Menunggu",
-  "price": "50000.00",
-  "notes": "Permintaan khusus: gunakan sabun A",
-  "created_at": "2025-10-23T..."
-}
-```
-
-## Langkah Instalasi & Menjalankan Secara Lokal
-1. Clone repo:
-   ```bash
-   git clone https://github.com/<username>/<repo>.git
-   cd <repo>
-   ```
-2. Install dependencies:
-   ```bash
-   npm install
-   ```
-3. Buat project di Supabase dan jalankan SQL tabel `items` (lihat di modul atau README).
-4. Salin `.env.example` menjadi `.env` dan isi variabel sesuai kredensial Supabase.
-5. Jalankan server lokal:
-   ```bash
-   npm run dev
-   ```
-6. Akses di `http://localhost:3000/api/items`.
-
-## Deploy (Vercel)
-1. Push repo ke GitHub.
-2. Login ke Vercel → Import Project → pilih repo.
-3. Tambahkan Environment Variables: `SUPABASE_URL` dan `SUPABASE_KEY`.
-4. Klik Deploy.
-5. Test endpoint publik: `https://<nama-proyek>.vercel.app/api/items`.
-
-## Output Wajib
-- 📦 Link GitHub Repository
-- 🌐 Link Deploy (Vercel)
 
 ## Lisensi
 Dibuat untuk keperluan Responsi Modul 1 Praktikum PPB.
